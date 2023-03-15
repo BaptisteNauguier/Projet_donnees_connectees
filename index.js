@@ -6,19 +6,19 @@ const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-var cors = require('cors');
+//var cors = require('cors');
 
 var data = {};
 var id = 0;
 
 app.use(express.static('html'));
 
-app.use((req, res, next)=>{
-	res.header('Access-Control-Allow-Origin', '*');
-	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-length, X-Requested-With');
-	next();
-});
+// app.use((req, res, next)=>{
+// 	res.header('Access-Control-Allow-Origin', '*');
+// 	res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+// 	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-length, X-Requested-With');
+// 	next();
+// });
 
 // app.post("/annotation", cors(), function(req, res){
 

@@ -11,24 +11,23 @@
 				"URI": document.getElementById('IdURI').value,
 				"Commentaire": document.getElementById('IdCommentaire').value
 			};
-			//var route = "/anno";
-			var route = "https://projetdonneesconnectees.onrender.com/annotation";
+			var route = "/anno";
+			//var route = "https://projetdonneesconnectees.onrender.com/annotation";
 			fetch(route, {
 				method: 'POST',
 				body: JSON.stringify(body),
 				headers: { 'Content-Type': 'application/json' },
-				mode: "cors",
-			}).then((res) => res.text()).then((text) => {
-				document.getElementById('IdURI').value = "";
-				document.getElementById('IdCommentaire').value = "";
-				document.getElementById('IdRes').innerHTML = text;
-			});
+				//mode: "cors",
+			}).then(
+				function (res) {
+					window.location.reload();
+				});
 
-
-			//.then(
-			//function(res){ 
-			//window.location.reload();
-			//	});
+			// .then((res) => res.text()).then((text) => {
+			// 	document.getElementById('IdURI').value = "";
+			// 	document.getElementById('IdCommentaire').value = "";
+			// 	document.getElementById('IdRes').innerHTML = text;
+			// });
 		}
 
 		function recevoirUneAnnotation() {
@@ -43,8 +42,8 @@
 				FormatIdAnnot = 'text/' + FormatIdAnnot;
 			}
 
-			var route = "https://projetdonneesconnectees.onrender.com/IdAnnot/"+Annot;
-			//var route = "/IdAnnot/" + Annot;
+			//var route = "https://projetdonneesconnectees.onrender.com/IdAnnot/"+Annot;
+			var route = "/IdAnnot/" + Annot;
 			fetch(route, {
 				method: 'GET',
 				headers: { 'accept': FormatIdAnnot }
