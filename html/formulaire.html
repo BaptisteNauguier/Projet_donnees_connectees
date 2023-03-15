@@ -12,7 +12,7 @@
 				"Commentaire": document.getElementById('IdCommentaire').value
 			};
 			var route = "/anno";
-			//var route = "https://projetdonneesconnectees.onrender.com/annotation";
+			//var route = "https://projetdonneesconnecte.onrender.com/anno";
 			fetch(route, {
 				method: 'POST',
 				body: JSON.stringify(body),
@@ -42,7 +42,7 @@
 				FormatIdAnnot = 'text/' + FormatIdAnnot;
 			}
 
-			//var route = "https://projetdonneesconnectees.onrender.com/IdAnnot/"+Annot;
+			//var route = "https://projetdonneesconnecte.onrender.com/IdAnnot/"+Annot;
 			var route = "/IdAnnot/" + Annot;
 			fetch(route, {
 				method: 'GET',
