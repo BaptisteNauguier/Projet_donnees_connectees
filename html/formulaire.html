@@ -128,7 +128,7 @@
 
 
 	<p style="color: red;">Si vous voulez recuperer toute les annotation correspondant à une URI : </p>
-	 <form action="/URI" method="GET" autocomplete="off"> 
+	<form action="/URI" method="GET" autocomplete="off">
 		<p>
 			<label for="AnnotURI">URI :</label>
 			<input type="text" name="AnnotURI" id="AnnotURI" placeholder="" size="30">
@@ -152,20 +152,20 @@
 
 
 
-	<!-- <p style="color: red;" > Si vous voulez recuperer toute les annotations correspondant a toute les URI : </p>
-		<form autocomplete="off">
-			<p>
-				<label for="URI">URI :</label>
-				<input type="text" name="URI" id="IdURI" placeholder="" size="30" maxlength="20">
-			</p>
-			<p>
-				<label for="Commentaire">Ajoutez commentaire</label><br>
-				<textarea name="Commentaire" id="IdCommentaire" size="30"></textarea>
-			</p>
-			<p> 
-				<button onclick="recevoirTouteAnnotationDeTouteURI()" type="button">Envoyer</button>
-			</p>
-		</form> -->
+	<p style="color: red;"> Si vous voulez recuperer toute les annotations correspondant a toute les URI : </p>
+	<form action="/URI" method="GET" autocomplete="off">
+		<input id="AnnotURI" name="AnnotURI" type="hidden" value="AllInfo">
+		<p>
+			<label for="FormatAnnotURI">Choisissez le format de réponse</label><br>
+			<select name="FormatAnnotURI" id="FormatAnnotURI">
+				<option value="html">html</option>
+				<option value="json">json</option>
+			</select>
+		</p>
+		<p>
+			<input type="submit" value="Submit">
+		</p>
+	</form>
 
 </body>
 
