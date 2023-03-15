@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<title> Formulaire </title>
+	<script>
+
+		function envoi() {
+			var body = {
+				"URI": document.getElementById('IdURI').value,
+				"Commentaire": document.getElementById('IdCommentaire').value
+			};
+			//var route = "/anno";
+			var route = "https://projetdonneesconnectees.onrender.com/annotation";
+			fetch(route, {
+				method: 'POST',
+				body: JSON.stringify(body),
+				headers: { 'Content-Type': 'application/json' },
+				mode: "cors",
+			}).then((res) => res.text()).then((text) => {
+				document.getElementById('IdURI').value = "";
+				document.getElementById('IdCommentaire').value = "";
+				document.getElementById('IdRes').innerHTML = text;
+			});
+
+
+			//.then(
+			//function(res){ 
+			//window.location.reload();
+			//	});
+		}
+
+		function recevoirUneAnnotation() {
+
+			var Annot = document.getElementById('IdAnnot').value;
+			var FormatIdAnnot = document.getElementById('FormatIdAnnot').value;
+
+			if (FormatIdAnnot == 'json') {
+				FormatIdAnnot = 'application/' + FormatIdAnnot;
+			}
+			else {
+				FormatIdAnnot = 'text/' + FormatIdAnnot;
+			}
+
+			var route = "https://projetdonneesconnectees.onrender.com/IdAnnot/"+Annot;
+			//var route = "/IdAnnot/" + Annot;
+			fetch(route, {
+				method: 'GET',
+				headers: { 'accept': FormatIdAnnot }
+			});
+
+		};
+
+		function recevoirTouteAnnotationDeUneURI() {
+
+			var AnnotURI = document.getElementById('AnnotURI').value;
+			var FormatAnnotURI = document.getElementById('FormatAnnotURI').value;
+
+			if (FormatAnnotURI == 'json') {
+				FormatAnnotURI = 'application/' + FormatAnnotURI;
+			}
+			else {
+				FormatAnnotURI = 'text/' + FormatAnnotURI;
+			}
+
+			var route = "/URI/" + AnnotURI;
+			fetch(route, {
+				method: 'GET',
+				headers: { 'accept': FormatAnnotURI }//, mode:"cors",   
+			});
+		}
+
+
+
+
+		function recevoirTouteAnnotationDeTouteURI() {
+
+		}
+
+
+	</script>
+</head>
+
+<body>
+
+
+
+
+	<p style="color: red;">SI vous voulez déposer une annotation : </p>
+	<form autocomplete="off">
+		<p>
+			<label for="URI">URI :</label>
+			<input type="text" name="URI" id="IdURI" placeholder="" size="50" maxlength="300">
+		</p>
+		<p>
+			<label for="Commentaire">Ajoutez commentaire</label><br>
+			<textarea name="Commentaire" id="IdCommentaire" size="30"></textarea>
+		</p>
+		<p>
+			<button onclick="envoi()" type="button">Envoyer</button>
+		</p>
+	</form>
+
+
+
+
+
+	<p style="color: red;"> SI vous voulez recuperer une annotation precise </p>
+	<form autocomplete="off">
+		<p>
+			<label for="Annot">Annot :</label>
+			<input type="text" name="Annot" id="IdAnnot" placeholder="" size="30" maxlength="20">
+		</p>
+		<p>
+			<label for="FormatIdAnnot">Choisissez le format de réponse</label><br>
+			<select name="FormatIdAnnot" id="FormatIdAnnot">
+				<option value="html">html</option>
+				<option value="json">Json</option>
+			</select>
+		</p>
+		<p>
+			<button onclick="recevoirUneAnnotation()" type="button">Envoyer</button>
+		</p>
+	</form>
+
+
+
+
+
+	<p style="color: red;">Si vous voulez recuperer toute les annotation correspondant à une URI : </p>
+	<form autocomplete="off">
+		<p>
+			<label for="AnnotURI">URI :</label>
+			<input type="text" name="AnnotURI" id="AnnotURI" placeholder="" size="30">
+		</p>
+
+		<p>
+			<label for="FormatAnnotURI">Choisissez le format de réponse</label><br>
+			<select name="FormatAnnotURI" id="FormatAnnotURI">
+				<option value="html">html</option>
+				<option value="json">Json</option>
+			</select>
+		</p>
+		<p>
+			<button onclick="recevoirTouteAnnotationDeUneURI()" type="button">Envoyer</button>
+		</p>
+	</form>
+
+
+
+
+
+
+	<!-- <p style="color: red;" > Si vous voulez recuperer toute les annotations correspondant a toute les URI : </p>
+		<form autocomplete="off">
+			<p>
+				<label for="URI">URI :</label>
+				<input type="text" name="URI" id="IdURI" placeholder="" size="30" maxlength="20">
+			</p>
+			<p>
+				<label for="Commentaire">Ajoutez commentaire</label><br>
+				<textarea name="Commentaire" id="IdCommentaire" size="30"></textarea>
+			</p>
+			<p> 
+				<button onclick="recevoirTouteAnnotationDeTouteURI()" type="button">Envoyer</button>
+			</p>
+		</form> -->
+
+</body>
+
+</html>
