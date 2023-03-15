@@ -128,7 +128,7 @@
 
 
 	<p style="color: red;">Si vous voulez recuperer toute les annotation correspondant à une URI : </p>
-	<form autocomplete="off">
+	 <form action="/URI" method="GET" autocomplete="off"> 
 		<p>
 			<label for="AnnotURI">URI :</label>
 			<input type="text" name="AnnotURI" id="AnnotURI" placeholder="" size="30">
@@ -142,7 +142,8 @@
 			</select>
 		</p>
 		<p>
-			<button onclick="recevoirTouteAnnotationDeUneURI()" type="button">Envoyer</button>
+			<!-- <button onclick="recevoirTouteAnnotationDeUneURI()" type="button">Envoyer</button> -->
+			<input type="submit" value="Submit">
 		</p>
 	</form>
 

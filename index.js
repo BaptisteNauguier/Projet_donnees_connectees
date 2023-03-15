@@ -91,7 +91,7 @@ app.get("/IdAnnot/:Annot", function (req, res) {
 
 
 
-app.get("/URI/:AnnotURI", function(req, res){
+app.get("/URI", function(req, res){
     console.log(" je suis rentré dans /URI");
 	var IdURI = req.query.AnnotURI;
 
